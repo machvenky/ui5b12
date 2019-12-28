@@ -5,6 +5,7 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
+						<Button text="Submit"/>
 						<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
 							<items>
 								<IconTabFilter text="Getting Started">
