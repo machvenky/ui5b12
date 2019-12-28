@@ -1,0 +1,76 @@
+<mvc:View controllerName="ui5.db.ui5b12.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+							<items>
+								<IconTabFilter text="Getting Started">
+									<layout:HorizontalLayout>
+										<Button text="Button1"></Button>
+										<Button text="Button2"></Button>
+										<Button text="Button3"></Button>
+									</layout:HorizontalLayout>
+								</IconTabFilter>
+								<IconTabFilter text="Data Binding">
+									<Text text="{/dbText/name}"/>
+									<form:SimpleForm>
+										<form:content>
+											<Label text="Name"/>
+											<Text text="{jsonm1>/Name}"/>
+											<Label text="Street/No"/>
+											<Text text="{jsonm1>/Street}"/>
+											<Button id="myBtn" text="{jsonm1>/City}" press="onBtnClick"></Button>
+										</form:content>
+									</form:SimpleForm>
+									<Table id="productTable" items="{path:'/ProductSet'}" growing="true" growingThreshold="5">
+										<headerToolbar>
+											<Toolbar>
+												<SearchField width="50%" search="onTableSearch"></SearchField>
+												<CheckBox text="TypeCode"></CheckBox>
+											</Toolbar>
+										</headerToolbar>
+										<columns>
+											<Column>
+												<Text text="Product ID"/>
+											</Column>
+											<Column>
+												<Text text="Product Name"/>
+											</Column>
+											<Column>
+												<Text text="Category"/>
+											</Column>
+											<Column>
+												<Text text="Price"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem type="Active" press="onTableRowClicked">
+												<cells>
+													<Text text="{ProductID}"/>
+													<Text text="{Name}"/>
+													<Text text="{parts:[{path:'Category'},{path:'TypeCode'}],formatter: '.formatter.convertToUpperCase'}"/>
+													<Text text="{= ${Price} > 500 ? 'High':'Low'}"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+									<!--<Panel id="productsPanel" headerText="Product details" visible="false">
+										<layout:Grid>
+											<Text text="{ProductID}"/>
+											<Text text="Description:\n {Description}"/>
+											<Text text="{Price}" visible="{= ${Price} > 500}"/>
+											<Text text="{TypeCode}"/>
+										</layout:Grid>
+									</Panel>-->
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

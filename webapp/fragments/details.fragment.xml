@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+<Dialog>
+	<content>
+		<Panel id="productsPanel" headerText="Product details">
+			<layout:Grid>
+				<Text text="{ProductID}"/>
+				<Text text="Description:\n {Description}"/>
+				<Text text="{Price}" visible="{= ${Price} > 500}"/>
+				<Text text="{TypeCode}"/>
+			</layout:Grid>
+		</Panel>
+	</content>
+	<beginButton>
+		<Button text="Ok" press="onDialogClose"></Button>
+	</beginButton>
+	<endButton>
+			<Button text="Close" press="onDialogClose"></Button>
+	</endButton>
+</Dialog>
+</core:FragmentDefinition>
